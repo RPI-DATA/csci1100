@@ -1,0 +1,244 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Lecture 16 — Exercises &mdash; CS 1 Spring 2018  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="CS 1 Spring 2018  documentation" href="../../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> CS 1 Spring 2018
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../calendar.html">Detailed schedule of topics for this class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../weekly_lecture_lab.html">Weekly lecture and lab schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../weekly_oh_alac.html">Weekly office hour and tutoring schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lecture_notes.html">Lecture notes and exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class_code.html">Code written in class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../python_environment.html">Software installation</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">CS 1 Spring 2018</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+    <li>Lecture 16 — Exercises</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/lecture_notes/lec16_dictionaries1_exercises/exercises.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="lecture-16-exercises">
+<h1>Lecture 16 — Exercises<a class="headerlink" href="#lecture-16-exercises" title="Permalink to this headline">¶</a></h1>
+<p>Solutions to the problems below must be sent to Submitty for
+automatic scoring.  A separate file must submitted for each problem.
+Solutions must be submitted by 4 pm on Tuesday, March 21.</p>
+<ol class="arabic">
+<li><p class="first">Write a Python program that forms a dictionary called <code class="docutils literal"><span class="pre">countries</span></code>
+that associates the population with each of the following
+countries (in millions):</p>
+<ul class="simple">
+<li>Algeria 37.1</li>
+<li>Canada 3.49</li>
+<li>Uganda 32.9</li>
+<li>Morocco 32.7</li>
+<li>Sudan 30.9</li>
+<li>Canada 34.9   # a correction to the error above.</li>
+</ul>
+<p>and then prints the length of the <code class="docutils literal"><span class="pre">countries</span></code> dictionary, the
+sorted list of the keys in <code class="docutils literal"><span class="pre">countries</span></code> and a sorted list of the
+values in <code class="docutils literal"><span class="pre">countries</span></code>.  There should be six assignment statements
+in your program (seven if you include initializing the dictionary)
+and three lines of output from your program.
+Please initialize your dictionary using <code class="docutils literal"><span class="pre">dict()</span></code> rather than <code class="docutils literal"><span class="pre">{}</span></code></p>
+</li>
+<li><p class="first">Our solution to the IMDB problem thus far has not actually told us
+who is the busiest individual in the Internet movie database.
+Your job in this part is to complete this task.  Starting from the
+code produced in class, which will be immediately posted on the
+course website (in the <em>Code written in class</em> area), write a
+program that finds and prints the name of the individual who
+appears the most times in the IMDB file you are given.  Also, count
+and output the number of individuals who appear only 1 time in the
+IMDB.</p>
+<p>For example if the answer were <code class="docutils literal"><span class="pre">Thumb,</span> <span class="pre">Toni</span></code> and this
+person had appeared 100 times, and if 2,000 people had only
+appeared once, then your output should be</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Enter</span> <span class="n">the</span> <span class="n">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">IMDB</span> <span class="n">file</span> <span class="o">==&gt;</span> <span class="n">imdb_data</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">Thumb</span><span class="p">,</span> <span class="n">Toni</span> <span class="n">appears</span> <span class="n">most</span> <span class="n">often</span><span class="p">:</span> <span class="mi">100</span> <span class="n">times</span>
+<span class="mi">2000</span> <span class="n">people</span> <span class="n">appear</span> <span class="n">once</span>
+</pre></div>
+</div>
+<p>We strongly suggest that you test your solution on the
+<code class="docutils literal"><span class="pre">hanks.txt</span></code> dataset first!  We will test on multiple files.  You
+do not need to worry about the possibility of a tie for the most
+commonly occuring name.  Please initialize your dictionary using
+<code class="docutils literal"><span class="pre">dict()</span></code> rather than <code class="docutils literal"><span class="pre">{}</span></code></p>
+</li>
+</ol>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Sibel Adali, Charles Stewart and Wesley Turner.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

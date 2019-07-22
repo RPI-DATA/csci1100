@@ -1,0 +1,51 @@
+Lecture 18 --- Exercises
+========================
+
+Solutions to the problems below must be sent to Submitty for
+automatic scoring.  A separate file must submitted for each problem.
+Solutions must be submitted by 4 pm on Tuesday, April 4.
+
+#. Starting from the ``Point2d.py`` file you download from the
+   Resources page of the Piazza site, please do the following:
+
+   #. Write a new ``Point2d`` method called ``scale`` that takes as an
+      input argument a ``Point2d`` object (``self``) and a numerical
+      value (int or float) and multiples both the ``x`` and ``y``
+      attributes by this value.
+
+   #. Write a new ``Point2d`` method called ``dominates`` that two
+      takes two ``Point2d`` objects and returns ``True`` if and only
+      if the x coordinate of the first object is greater than that of
+      the second object and the y coordinate of the first object is
+      greater than that of the second object.
+
+   #. The code to test these functions is commented out in the main
+      code area.  Please remove this commenting, test on Piazza, and
+      submit your resulting ``Point2d.py`` file.  Call it ``Point2d_q1.py``
+
+#. Copy your resulting file from the first question to a new file,
+   perhaps called ``Point2d_q2.py``.
+
+   #. Write and test the implementation of the method ``__str__``
+      which returns a string created from the values of a ``Point2d``
+      object.  For our purposes this is mostly used to create a string
+      that can be printed.   Make sure you have this working before
+      you proceed to the other parts of this exercise because they
+      depend on it.
+
+   #. Write the implementation of the subtraction method ``__sub__``
+      for the ``Point2d`` object.  Uncomment the code in the main area
+      and test this in Wing IDE.
+
+   #. Write the implementation of the method ``__mul__`` which is
+      like the ``scale`` function you wrote for part 1, but it creates
+      a new ``Point2d`` object.
+
+   #. Write the implementation of the method ``__eq__`` which
+      returns ``True`` if and only if the two ``Point2d`` objects have
+      exactly the same ``x`` and ``y`` values.
+
+   For each of these you should look at the commented out main code in
+   the ``Point2d.py`` file you were provided to see how these
+   methods should be used.  Uncomment this code, test your methods,
+   and upload to Submitty when you are done.

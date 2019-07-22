@@ -11,7 +11,7 @@ data/*
 .ipython*
 private
 *.slides.html
-*html
+
 __pycache__/
 *.py[cod]
 
