@@ -4,7 +4,10 @@ Repository to demonstrate Jupyter notebook coversion of the Computer Science 1 c
 ## Example
 Let's look at a sample file conversion. 
 
-[This](https://github.com/RPI-DATA/csci1100/blob/master/_build/html/lecture_notes/lec02_calculator.html) html file after conversion to Jupyter notebook looks like [this](https://github.com/RPI-DATA/csci1100/blob/master/_build/jupyter/lecture_notes/lec02_calculator.ipynb).
+Try one of the notebooks by clicking the button below:
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/RPI-DATA/csci1100/blob/master/_build/jupyter/lecture_notes/lec02_calculator.ipynb)
+
 
 The Jupyter notebook is interactable with the code blocks ready to be executed. 
 
