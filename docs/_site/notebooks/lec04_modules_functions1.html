@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>Lecture 4 - Using Functions and Modules</title>
+  <meta name="description" content="Notebook created: 2019-07-16 14:30:27Generated from: jWebsite/lecture_notes/lec04_modules_functions1.rst">
+
+  <link rel="canonical" href="http://localhost:4000/csci1100/docs//notebooks/lec04_modules_functions1.html">
+  <link rel="alternate" type="application/rss+xml" title="CSCI 1100 Spring 2018" href="http://localhost:4000/csci1100/docs//feed.xml">
+
+  <meta property="og:url"         content="http://localhost:4000/csci1100/docs//notebooks/lec04_modules_functions1.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Lecture 4 - Using Functions and Modules" />
+<meta property="og:description" content="Notebook created: 2019-07-16 14:30:27Generated from: jWebsite/lecture_notes/lec04_modules_functions1.rst" />
+<meta property="og:image"       content="" />
+
+
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage":
+    "http://localhost:4000/csci1100/docs//notebooks/lec04_modules_functions1.html",
+  "headline":
+    "Lecture 4 - Using Functions and Modules",
+  "datePublished":
+    "2019-08-15T14:45:47-04:00",
+  "dateModified":
+    "2019-08-15T14:45:47-04:00",
+  "description":
+    "Notebook created: 2019-07-16 14:30:27Generated from: jWebsite/lecture_notes/lec04_modules_functions1.rst",
+  "author": {
+    "@type": "Person",
+    "name": "Wesley Turner"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data 100 at UC Berkeley",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:4000/csci1100/docs/",
+      "width": 60,
+      "height": 60
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "http://localhost:4000/csci1100/docs/",
+    "height": 60,
+    "width": 60
+  }
+}
+
+  </script>
+  <link rel="stylesheet" href="/csci1100/docs/assets/css/styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css ">
+  <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#efae0a"> -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#233947">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/csci1100/docs/images/logo/favicon.ico">
+
+  <!-- MathJax Config -->
+  <!-- Allow inline math using $ and automatically break long math lines -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    CommonHTML: {
+        linebreaks: {
+            automatic: true,
+        },
+    },
+});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML' async></script>
+
+  <!-- DOM updating function -->
+  <script>
+const runWhenDOMLoaded = cb => {
+  if (document.readyState != 'loading') {
+    cb()
+  } else if (document.addEventListener) {
+    document.addEventListener('DOMContentLoaded', cb)
+  } else {
+    document.attachEvent('onreadystatechange', function() {
+      if (document.readyState == 'complete') cb()
+    })
+  }
+}
+
+// Helper function to init things quickly
+initFunction = function(myfunc) {
+  runWhenDOMLoaded(myfunc);
+  document.addEventListener('turbolinks:load', myfunc);
+};
+</script>
+
+  <!-- Define some javascript variables that will be useful in other javascript -->
+  <script>
+    const site_basename = '/csci1100/docs/';
+  </script>
+
+  <!-- Add AnchorJS to let headers be linked -->
+  <script src="/csci1100/docs/assets/js/anchor.min.js"  type="text/javascript"></script>
+  <script>
+
+initFunction(function () {
+    anchors.add("main h1, main h2, main h3, main h4")
+});
+
+</script>
+
+  <!-- Include Turbolinks to make page loads fast -->
+  <!-- https://github.com/turbolinks/turbolinks -->
+  <script src="/csci1100/docs/assets/js/turbolinks.js" async></script>
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <!-- Load nbinteract for widgets -->
+  
+
+  <!-- Load Thebelab for interactive widgets -->
+  <!-- Include Thebelab for interactive code if it's enabled -->
+
+
+<!-- Display Thebelab button in each code cell -->
+<script>
+/**
+ * Set up thebelab button for code blocks
+ */
+
+const thebelabCellButton = id =>
+  `<a id="thebelab-cell-button-${id}" class="btn thebebtn o-tooltip--left" data-tooltip="Interactive Mode">
+    <img src="/csci1100/docs/assets/images/edit-button.svg" alt="Start interactive mode">
+  </a>`
+
+
+const addThebelabButtonToCodeCells =  () => {
+
+  const codeCells = document.querySelectorAll('div.input_area > div.highlighter-rouge:not(.output) pre')
+  codeCells.forEach((codeCell, index) => {
+    const id = codeCellId(index)
+    codeCell.setAttribute('id', id)
+    if (document.getElementById("thebelab-cell-button-" + id) == null) {
+      codeCell.insertAdjacentHTML('afterend', thebelabCellButton(id));
+    }
+  })
+}
+
+initFunction(addThebelabButtonToCodeCells);
+</script>
+
+
+
+<script type="text/x-thebe-config">
+    {
+      requestKernel: true,
+      binderOptions: {
+        repo: 'YOUR-ORG/YOUR-REPO',
+        ref: 'gh-pages',
+      },
+      codeMirrorConfig: {
+        theme: "abcdef"
+      },
+      kernelOptions: {
+        name: 'python3',
+      }
+    }
+</script>
+<script src="https://unpkg.com/thebelab@0.4.0/lib/index.js"></script>
+<script>
+    /**
+     * Add attributes to Thebelab blocks
+     */
+
+    const initThebelab = () => {
+        const addThebelabToCodeCells = () => {
+            console.log("Adding thebelab to code cells...");
+            // If Thebelab hasn't loaded, wait a bit and try again. This
+            // happens because we load ClipboardJS asynchronously.
+            if (window.thebelab === undefined) {
+                setTimeout(addThebelabToCodeCells, 250)
+            return
+            }
+
+            // If we already detect a Thebelab cell, don't re-run
+            if (document.querySelectorAll('div.thebelab-cell').length > 0) {
+                return;
+            }
+
+            // Find all code cells, replace with Thebelab interactive code cells
+            const codeCells = document.querySelectorAll('.input_area pre')
+            codeCells.forEach((codeCell, index) => {
+                const id = codeCellId(index)
+                codeCell.setAttribute('data-executable', 'true')
+
+                // Figure out the language it uses and add this too
+                var parentDiv = codeCell.parentElement.parentElement;
+                var arrayLength = parentDiv.classList.length;
+                for (var ii = 0; ii < arrayLength; ii++) {
+                    var parts = parentDiv.classList[ii].split('language-');
+                    if (parts.length === 2) {
+                        // If found, assign dataLanguage and break the loop
+                        var dataLanguage = parts[1];
+                        break;
+                    }
+                }
+                codeCell.setAttribute('data-language', dataLanguage)
+
+                // If the code cell is hidden, show it
+                var inputCheckbox = document.querySelector(`input#hidebtn${codeCell.id}`);
+                if (inputCheckbox !== null) {
+                    setCodeCellVisibility(inputCheckbox, 'visible');
+                }
+            });
+
+            // Remove the event listener from the page so keyboard press doesn't
+            // Change page
+            document.removeEventListener('keydown', initPageNav)
+            keyboardListener = false;
+
+            // Init thebelab
+            thebelab.bootstrap();
+
+            // Remove copy buttons since they won't work anymore
+            const copyAndThebeButtons = document.querySelectorAll('.copybtn, .thebebtn')
+            copyAndThebeButtons.forEach((button, index) => {
+                button.remove();
+            });
+
+            // Remove outputs since they'll be stale
+            const outputs = document.querySelectorAll('.output *, .output')
+            outputs.forEach((output, index) => {
+                output.remove();
+            });
+        }
+
+        // Add event listener for the function to modify code cells
+        const thebelabButtons = document.querySelectorAll('[id^=thebelab], [id$=thebelab]')
+        thebelabButtons.forEach((thebelabButton,index) => {
+            if (thebelabButton === null) {
+                setTimeout(initThebelab, 250)
+                return
+            };
+            thebelabButton.addEventListener('click', addThebelabToCodeCells);
+        });
+    }
+
+    // Initialize Thebelab
+    initFunction(initThebelab);
+</script>
+
+
+
+  <!-- Load the auto-generating TOC -->
+  <script src="/csci1100/docs/assets/js/tocbot.min.js"  type="text/javascript"></script>
+  <script>
+var initToc = function () {
+  tocbot.init({
+    tocSelector: 'nav.onthispage',
+    contentSelector: '.c-textbook__content',
+    headingSelector: 'h2, h3',
+    orderedList: false,
+    collapseDepth: 6,
+    listClass: 'toc__menu',
+    activeListItemClass: "",  // Not using
+    activeLinkClass: "", // Not using
+  });
+  tocbot.refresh();
+}
+initFunction(initToc);
+</script>
+
+  <!-- Google analytics -->
+  <script src="/csci1100/docs/assets/js/ga.js" async></script>
+
+  <!-- Clipboard copy button -->
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" async></script>
+
+  <!-- Load JS that depends on site variables -->
+  <script>
+/**
+ * Set up copy/paste for code blocks
+ */
+const codeCellId = index => `codecell${index}`
+
+const clipboardButton = id =>
+  `<a id="copy-button-${id}" class="btn copybtn o-tooltip--left" data-tooltip="Copy" data-clipboard-target="#${id}">
+    <img src="/csci1100/docs/assets/images/copy-button.svg" alt="Copy to clipboard">
+  </a>`
+
+// Clears selected text since ClipboardJS will select the text when copying
+const clearSelection = () => {
+  if (window.getSelection) {
+    window.getSelection().removeAllRanges()
+  } else if (document.selection) {
+    document.selection.empty()
+  }
+}
+
+// Changes tooltip text for two seconds, then changes it back
+const temporarilyChangeTooltip = (el, newText) => {
+  const oldText = el.getAttribute('data-tooltip')
+  el.setAttribute('data-tooltip', newText)
+  setTimeout(() => el.setAttribute('data-tooltip', oldText), 2000)
+}
+
+const addCopyButtonToCodeCells = () => {
+  // If ClipboardJS hasn't loaded, wait a bit and try again. This
+  // happens because we load ClipboardJS asynchronously.
+  if (window.ClipboardJS === undefined) {
+    setTimeout(addCopyButtonToCodeCells, 250)
+    return
+  }
+
+  const codeCells = document.querySelectorAll('div.c-textbook__content > div.highlighter-rouge > div.highlight > pre, div.input_area pre')
+  codeCells.forEach((codeCell, index) => {
+    const id = codeCellId(index)
+    codeCell.setAttribute('id', id)
+    if (document.getElementById("copy-button" + id) == null) {
+      codeCell.insertAdjacentHTML('afterend', clipboardButton(id));
+    }
+  })
+
+  const clipboard = new ClipboardJS('.copybtn')
+  clipboard.on('success', event => {
+    clearSelection()
+    temporarilyChangeTooltip(event.trigger, 'Copied!')
+  })
+
+  clipboard.on('error', event => {
+    temporarilyChangeTooltip(event.trigger, 'Failed to copy')
+  })
+
+  // Get rid of clipboard before the next page visit to avoid memory leak
+  document.addEventListener('turbolinks:before-visit', () =>
+    clipboard.destroy()
+  )
+}
+
+initFunction(addCopyButtonToCodeCells);
+</script>
+
+
+  <!-- Hide cell code -->
+  <script>
+    /**
+    Add buttons to hide code cells
+    */
+
+
+    var setCodeCellVisibility = function (inputField, kind) {
+        // Update the image and class for hidden
+        var id = inputField.getAttribute('data-id');
+        var codeCell = document.querySelector(`#${id} div.highlight`);
+
+        if (kind === "visible") {
+            codeCell.classList.remove('hidden');
+            inputField.checked = true;
+        } else {
+            codeCell.classList.add('hidden');
+            inputField.checked = false;
+        }
+    }
+
+    var toggleCodeCellVisibility = function (event) {
+        // The label is clicked, and now we decide what to do based on the input field's clicked status
+        if (event.target.tagName === "LABEL") {
+            var inputField = event.target.previousElementSibling;
+        } else {
+            // It is the span inside the target
+            var inputField = event.target.parentElement.previousElementSibling;
+        }
+
+        if (inputField.checked === true) {
+            setCodeCellVisibility(inputField, "visible");
+        } else {
+            setCodeCellVisibility(inputField, "hidden");
+        }
+    }
+
+
+    // Button constructor
+    const hideCodeButton = id => `<input class="hidebtn" type="checkbox" id="hidebtn${id}" data-id="${id}"><label title="Toggle cell" for="hidebtn${id}" class="plusminus"><span class="pm_h"></span><span class="pm_v"></span></label>`
+
+    var addHideButton = function () {
+        // If a hide button is already added, don't add another
+        if (document.querySelector('div.hidecode input') !== null) {
+            return;
+        }
+
+        // Find the input cells and add a hide button
+        document.querySelectorAll('div.input_area').forEach(function (item, index) {
+            if (!item.classList.contains("hidecode")) {
+                // Skip the cell if it doesn't have a hidecode class
+                return;
+            }
+
+            const id = codeCellId(index)
+            item.setAttribute('id', id);
+            // Insert the button just inside the end of the next div
+            item.querySelector('div').insertAdjacentHTML('beforeend', hideCodeButton(id))
+
+            // Set up the visibility toggle
+            hideLink = document.querySelector(`#${id} div.highlight + input + label`);
+            hideLink.addEventListener('click', toggleCodeCellVisibility)
+        });
+    }
+
+
+    // Initialize the hide buttos
+    var initHiddenCells = function () {
+        // Add hide buttons to the cells
+        addHideButton();
+
+        // Toggle the code cells that should be hidden
+        document.querySelectorAll('div.hidecode input').forEach(function (item) {
+            setCodeCellVisibility(item, 'hidden');
+            item.checked = true;
+        })
+    }
+
+    initFunction(initHiddenCells);
+
+</script>
+
+  <!-- Load custom website scripts -->
+  <script src="/csci1100/docs/assets/js/scripts.js" async></script>
+
+  <!-- Load custom user CSS and JS  -->
+  <script src="/csci1100/docs/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/csci1100/docs/assets/custom/custom.css">
+
+  <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
+  
+
+  <!-- Lunr search code - will only be executed on the /search page -->
+  <script src="/csci1100/docs/assets/js/lunr/lunr.min.js" type="text/javascript"></script>
+  <script>var initQuery = function() {
+  // See if we have a search box
+  var searchInput = document.querySelector('input#lunr_search');
+  if (searchInput === null) {
+    return;
+  }
+
+  // Function to parse our lunr cache
+  var idx = lunr(function () {
+    this.field('title')
+    this.field('excerpt')
+    this.field('categories')
+    this.field('tags')
+    this.ref('id')
+
+    this.pipeline.remove(lunr.trimmer)
+
+    for (var item in store) {
+      this.add({
+        title: store[item].title,
+        excerpt: store[item].excerpt,
+        categories: store[item].categories,
+        tags: store[item].tags,
+        id: item
+      })
+    }
+  });
+
+  // Run search upon keyup
+  searchInput.addEventListener('keyup', function () {
+    var resultdiv = document.querySelector('#results');
+    var query = document.querySelector("input#lunr_search").value.toLowerCase();
+    var result =
+      idx.query(function (q) {
+        query.split(lunr.tokenizer.separator).forEach(function (term) {
+          q.term(term, { boost: 100 })
+          if(query.lastIndexOf(" ") != query.length-1){
+            q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
+          }
+          if (term != ""){
+            q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
+          }
+        })
+      });
+
+      // Empty the results div
+      while (resultdiv.firstChild) {
+        resultdiv.removeChild(resultdiv.firstChild);
+      }
+
+    resultdiv.insertAdjacentHTML('afterbegin', '<p class="results__found">'+result.length+' Result(s) found</p>');
+    for (var item in result) {
+      var ref = result[item].ref;
+      if(store[ref].teaser){
+        var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<div class="archive__item-teaser">'+
+                '<img src="'+store[ref].teaser+'" alt="">'+
+              '</div>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      else{
+    	  var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      resultdiv.insertAdjacentHTML('beforeend', searchitem);
+    }
+  });
+};
+
+initFunction(initQuery);
+</script>
+</head>
+
+  <body>
+    <!-- .js-show-sidebar shows sidebar by default -->
+    <div id="js-textbook" class="c-textbook js-show-sidebar">
+      
+
+
+
+<nav id="js-sidebar" class="c-textbook__sidebar">
+  <a href="https://rpi-data.github.io/csci1100"><img src="/csci1100/docs/images/logo/rpi.png" class="textbook_logo" id="sidebar-logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">CSCI 1100 Spring 2018</h2>
+  <ul class="c-sidebar__chapters">
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/csci1100/docs/index.html"
+        >
+          
+          Home
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+        <li class="c-sidebar__chapter"><a class="c-sidebar__entry" href="/csci1100/docs/search.html">Search</a></li>
+        
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/csci1100/docs/sessions/index.html"
+        >
+          
+          Schedule
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/csci1100/docs/sessions/readings.html"
+                >
+                  
+                  All Readings
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/csci1100/docs/sessions/session1.html"
+                >
+                  
+                  Session 1
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/csci1100/docs/sessions/session2.html"
+                >
+                  
+                  Session 2
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/csci1100/docs/sessions/session3.html"
+                >
+                  
+                  Session 3
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/csci1100/docs/sessions/session4.html"
+                >
+                  
+                  Session 4
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/csci1100/docs/notebooks/index.html"
+        >
+          
+          Notebooks
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections ">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/csci1100/docs/notebooks/lec01_intro.html"
+                >
+                  
+                  Lecture 1 - Introduction
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/csci1100/docs/notebooks/lec02_calculator.html"
+                >
+                  
+                  Lecture 2 - Python as a Calculator
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/csci1100/docs/notebooks/lec03_strings.html"
+                >
+                  
+                  Lecture 3 - Python Strings
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry c-sidebar__entry--active"
+                  href="/csci1100/docs/notebooks/lec04_modules_functions1.html"
+                >
+                  
+                  Lecture 4 - Using Functions and Modules
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/csci1100/docs/assignments/index.html"
+        >
+          
+          Assignments
+        </a>
+
+        
+
+          
+          
+          
+          
+
+          
+
+          <ul class="c-sidebar__sections u-hidden-visually">
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/csci1100/docs/assignments/lec02_calculator_exercises.html"
+                >
+                  
+                  Assignment 1
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/csci1100/docs/assignments/lec03_strings_exercises.html"
+                >
+                  
+                  Assignment 2
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+              
+              
+
+              <li class="c-sidebar__section">
+                <a class="c-sidebar__entry "
+                  href="/csci1100/docs/assignments/lec04_modules_functions1_exercises.html"
+                >
+                  
+                  Assignment 3
+                </a>
+
+                
+                
+
+              </li>
+              
+            
+          </ul>
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="/csci1100/docs/grading.html"
+        >
+          
+          Grading
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="http://piazza.com/rpi/spring2018/csci1100"
+        >
+          
+          Piazza
+        </a>
+
+        
+      </li>
+
+      
+    
+      
+      
+
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter">
+        <a class="c-sidebar__entry "
+          href="https://www.cs.rpi.edu/submitty/index.php?semester=s18&course=csci1100"
+        >
+          
+          Homework Submission
+        </a>
+
+        
+      </li>
+
+      
+    
+  </ul>
+  <p class="sidebar_footer">Powered by <a href="https://github.com/jupyter/jupyter-book">Jupyter Book</a></p>
+</nav>
+
+      
+      <!-- Empty sidebar placeholder that we'll auto-fill with javascript -->
+      <aside class="sidebar__right">
+          <header><h4 class="nav__title"><i class="fa fa-list"></i>   On this page</h4></header>
+          <nav class="onthispage">
+          </nav>
+      </aside>
+      
+      <main class="c-textbook__page" tabindex="-1">
+          <div class="o-wrapper">
+            <div class="c-sidebar-toggle">
+  <!-- We show the sidebar by default so we use .is-active -->
+  <button
+    id="js-sidebar-toggle"
+    class="hamburger hamburger--arrowalt is-active"
+  >
+    <span class="hamburger-box">
+      <span class="hamburger-inner"></span>
+    </span>
+    <span class="c-sidebar-toggle__label">Toggle Sidebar</span>
+  </button>
+</div>
+
+            
+<div class="buttons">
+<a href="/csci1100/docs/content/C:%5CUsers%5Csjgar%5CDocuments%5CGitHub%5Ccsci1100%5Cdocs%5Ccontent%5Cnotebooks/lec04_modules_functions1.ipynb" download>
+<button id="interact-button-download" class="interact-button">Download</button>
+</a>
+
+<button id="interact-button-thebelab" class="interact-button">Thebelab</button>
+
+
+
+
+
+</div>
+
+
+            <div class="c-textbook__content">
+              <p>Notebook created: 2019-07-16 14:30:27<br />
+Generated from: jWebsite/lecture_notes/lec04_modules_functions1.rst</p>
+
+<h1 id="lecture-4---using-functions-and-modules">Lecture 4 - Using functions and modules</h1>
+
+<h2 id="reading">Reading</h2>
+
+<ul>
+  <li>Material for this lecture is drawn from Sections 3.1, 6.1 and
+7.1-7.3 of <em>Practical Programming</em>.</li>
+  <li>Topics that we will discuss include:
+    <ul>
+      <li>Python functions for different data types.</li>
+      <li>String functions and calling functions on objects</li>
+      <li>Using modules provided with Python</li>
+    </ul>
+  </li>
+  <li>We will revisit all these concepts several times throughout the semester.</li>
+</ul>
+
+<h2 id="what-have-we-learned-so-far">What have we learned so far?</h2>
+
+<ul>
+  <li>So far, we have learned about three basic data types: integer, float
+and strings.</li>
+  <li>We also learned some valuable functions that operate on strings
+(<code class="highlighter-rouge">len</code>) and that convert between data types (<code class="highlighter-rouge">int</code>, <code class="highlighter-rouge">str</code>, <code class="highlighter-rouge">float</code>)</li>
+</ul>
+
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"Pickle Rick"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="mi">11</span>
+
+</code></pre></div>    </div>
+  </div>
+
+</div>
+
+<ul>
+  <li>The functions that Python provides are called <em>built-in</em> functions.</li>
+  <li>We will see examples of these functions and experiment with their
+use in this class.</li>
+</ul>
+
+<h2 id="how-about-numerical-functions">How about numerical functions?</h2>
+
+<ul>
+  <li>
+    <p>Many numerical functions also exist. Let us experiment with some of
+these first. You should make a note of what they do.</p>
+
+    <ul>
+      <li><code class="highlighter-rouge">abs()</code></li>
+      <li><code class="highlighter-rouge">pow()</code></li>
+      <li><code class="highlighter-rouge">int()</code></li>
+      <li><code class="highlighter-rouge">float()</code></li>
+      <li><code class="highlighter-rouge">round()</code></li>
+      <li><code class="highlighter-rouge">max()</code></li>
+      <li><code class="highlighter-rouge">min()</code></li>
+    </ul>
+  </li>
+  <li>
+    <p>We will look carefully in class at how these work.</p>
+  </li>
+</ul>
+
+<h2 id="objects-and-methods">Objects and Methods</h2>
+
+<ul>
+  <li>All variables in Python are objects.</li>
+  <li>Objects are abstractions:
+    <ul>
+      <li>Each object defines an organization and structure to the data they
+store.</li>
+      <li>They have operations/functions - we call them <strong>methods</strong> -
+that we can apply to access and manipulate this data.</li>
+      <li>We don’t think about how they are implemented; instead we just
+think about how to use them.  This is why they are called
+abstractions.</li>
+    </ul>
+  </li>
+  <li>Methods associate with objects often use a function call syntax of
+the form</li>
+</ul>
+
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">variable</span><span class="o">.</span><span class="n">method</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span>
+
+</code></pre></div>    </div>
+  </div>
+
+</div>
+
+<p>For example:</p>
+
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">b</span> <span class="o">=</span> <span class="s">'good morning'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">b</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'o'</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+</code></pre></div>    </div>
+  </div>
+
+</div>
+
+<p>This also works on particular values instead of variables:</p>
+
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">value</span><span class="o">.</span><span class="n">method</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span>
+
+</code></pre></div>    </div>
+  </div>
+
+</div>
+
+<p>as in</p>
+
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="s">'good morning'</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">'o'</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+</code></pre></div>    </div>
+  </div>
+
+</div>
+
+<ul>
+  <li>You can see all the methods that apply to an object type with help
+as well. Try:</li>
+</ul>
+
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">help</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+
+</code></pre></div>    </div>
+  </div>
+
+</div>
+
+<h2 id="string-methods">String Methods</h2>
+
+<ul>
+  <li>Here are a few more (of many) string methods:</li>
+</ul>
+
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"Neil Degrasse Tyson"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="s">'neil degrasse tyson'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">lowername</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">lowername</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="s">'NEIL DEGRASSE TYSON'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">lowername</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+<span class="s">'Neil degrasse tyson'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">lowername</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+<span class="s">'Neil Degrasse Tyson'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s">"abracadabra"</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">"br"</span><span class="p">,</span> <span class="s">"dr"</span><span class="p">)</span>
+<span class="s">'adracadadra'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s">"abracadabra"</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">"a"</span><span class="p">,</span> <span class="s">""</span><span class="p">)</span>
+<span class="s">'brcdbr'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s">"Neil Degrasse Tyson"</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">" "</span><span class="p">)</span>
+<span class="mi">4</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s">"Neil Degrasse Tyson"</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">"a"</span><span class="p">)</span>
+<span class="mi">9</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s">"Neil Degrasse Tyson"</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">"x"</span><span class="p">)</span>
+<span class="o">-</span><span class="mi">1</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s">"Monty Python"</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s">"o"</span><span class="p">)</span>
+<span class="mi">2</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s">"aaabbbfsassassaaaa"</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s">"a"</span><span class="p">)</span>
+<span class="s">'bbbfsassass'</span>
+
+</code></pre></div>    </div>
+  </div>
+
+</div>
+
+<ul>
+  <li>As described above, all of these are called in the form of
+<code class="highlighter-rouge">object.method(arguments)</code>, where <code class="highlighter-rouge">object</code> is either a string
+variable or a string value.</li>
+  <li>Not all functions on objects are called this way. Some are called
+using more of a function form, while others are called as
+operators.</li>
+</ul>
+
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">episode</span> <span class="o">=</span> <span class="s">"Cheese Shop"</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">episode</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="s">'cheese shop'</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">episode</span><span class="p">)</span>
+<span class="mi">11</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">episode</span> <span class="o">+</span> <span class="s">"!"</span>
+<span class="s">'Cheese Shop!'</span>
+
+</code></pre></div>    </div>
+  </div>
+
+</div>
+
+<ul>
+  <li>We will see the reason for the differences later in the semester.</li>
+  <li>Note of caution:  none of these functions change the variable that they
+are applied to.</li>
+</ul>
+
+<h2 id="practice-problems-1">Practice Problems (1)</h2>
+
+<ol>
+  <li>Write code that takes a string in a variable called <code class="highlighter-rouge">phrase</code> and
+  prints the string with all vowels removed.</li>
+  <li>Create a string in a variable and assign it to a variable called
+<code class="highlighter-rouge">name</code>.  Write code to create a new string that repeats each
+letter <code class="highlighter-rouge">a</code> in <code class="highlighter-rouge">name</code> as many times as <code class="highlighter-rouge">a</code> appears in <code class="highlighter-rouge">name</code>
+(assume the word is all lower case).<br />
+For example,</li>
+</ol>
+
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"amos eaton"</span>
+<span class="c">## your code goes here</span>
+
+
+
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">name</span>
+<span class="s">'aamos eaaton'</span>
+
+</code></pre></div>    </div>
+  </div>
+
+</div>
+
+<ol>
+  <li>Given a string in a variable called <code class="highlighter-rouge">name</code>, switch all letters
+<code class="highlighter-rouge">a</code> and <code class="highlighter-rouge">e</code> (only lowercase versions). Assume the variable
+contains only letters and spaces.<br />
+Hint: first replace each ‘a’ with ‘1’.</li>
+</ol>
+
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"Rensselaer Polytechnic Institute"</span>
+<span class="c">## your code goes here</span>
+
+
+
+<span class="o">&gt;&gt;&gt;</span> <span class="n">name</span>
+<span class="s">'Ranssalear Polytachnic Instituta'</span>
+
+</code></pre></div>    </div>
+  </div>
+
+</div>
+
+<h2 id="string-format-method">String Format Method</h2>
+
+<ul>
+  <li>The <code class="highlighter-rouge">format()</code> method provides a nice way to produce clean
+looking output.</li>
+  <li>For example, consider the code</li>
+</ul>
+
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">r</span> <span class="o">=</span> <span class="mf">2.5</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">h</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mf">0.5</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">volume</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">r</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">h</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="s">'A cylinder of radius'</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="s">'and height'</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="s">'has volume'</span><span class="p">,</span> <span class="n">volume</span><span class="p">)</span>
+<span class="n">A</span> <span class="n">cylinder</span> <span class="n">of</span> <span class="n">radius</span> <span class="mf">2.5</span> <span class="ow">and</span> <span class="n">height</span> <span class="mf">3.1622776601683795</span> <span class="n">has</span> <span class="n">volume</span> <span class="mf">62.09112421505237</span>
+
+</code></pre></div>    </div>
+  </div>
+
+</div>
+
+<ul>
+  <li>Now look at what we can do with the <code class="highlighter-rouge">format()</code> method:</li>
+</ul>
+
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">out_string</span> <span class="o">=</span> <span class="s">'A cylinder of radius {0:.2f} and height {1:.2f} has volume {2:.2f}'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">volume</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">out_string</span><span class="p">)</span>
+<span class="n">A</span> <span class="n">cylinder</span> <span class="n">of</span> <span class="n">radius</span> <span class="mf">2.50</span> <span class="ow">and</span> <span class="n">height</span> <span class="mf">3.16</span> <span class="n">has</span> <span class="n">volume</span> <span class="mf">62.09</span>
+
+</code></pre></div>    </div>
+  </div>
+
+</div>
+
+<ul>
+  <li>Method <code class="highlighter-rouge">format()</code> replaces the substrings between { } with
+values from the argument list.
+    <ul>
+      <li>{0:.2f} means argument 0, will be formatted as a float with 2
+digits shown to the right of the decimal place.
+        <ul>
+          <li>Notice it applies rounding.</li>
+        </ul>
+      </li>
+      <li>We can leave off the 0, the 1, and the 2 from before the : unless
+we want to change the order of the output.</li>
+      <li>We can leave off the :.2f if we want to accept print’s normal
+formatting on float outputs.</li>
+    </ul>
+  </li>
+  <li>There are many variations on this and we will see quite a few as we
+progress through the semester.</li>
+</ul>
+
+<h2 id="built-in-functions">Built-In Functions</h2>
+
+<ul>
+  <li>All the functions we have seen so far are <em>built-in</em> to the core
+Python. It means that these functions are available when you start
+Python.</li>
+  <li>Type</li>
+</ul>
+
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">help</span><span class="p">(</span><span class="n">__builtins__</span><span class="p">)</span>
+
+</code></pre></div>    </div>
+  </div>
+
+</div>
+
+<p>to see the full list.</p>
+
+<h2 id="modules">Modules</h2>
+
+<ul>
+  <li>Now we will begin to look at using functions that are not built
+into the core of Python but rather imported as <strong>modules</strong>.</li>
+  <li>Modules are collections of functions and constants that
+provide additional power to Python programs.</li>
+  <li>Some modules come with Python, but are not loaded automatically. For
+example the <code class="highlighter-rouge">math</code> module.</li>
+  <li>Other modules need to be installed first. When we installed software
+in Lab 0, we installed a library called <code class="highlighter-rouge">pillow</code> that has a
+number of image manipulation modules.</li>
+  <li>To use a function in a module, first you must load it into your
+program using <code class="highlighter-rouge">import</code>. Let’s see the <code class="highlighter-rouge">math</code> module:</li>
+</ul>
+
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">math</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="mf">2.2360679774997898</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">math</span><span class="o">.</span><span class="n">trunc</span><span class="p">(</span><span class="mf">4.5</span><span class="p">)</span>
+<span class="mi">4</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="mf">4.5</span><span class="p">)</span>
+<span class="mf">5.0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="mf">10.0</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+<span class="mf">3.141592653589793</span>
+
+</code></pre></div>    </div>
+  </div>
+
+</div>
+
+<ul>
+  <li>We can get an explanation of what functions and variables are
+provided in a module using the <code class="highlighter-rouge">help</code> function</li>
+</ul>
+
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">math</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">help</span><span class="p">(</span><span class="n">math</span><span class="p">)</span>
+
+</code></pre></div>    </div>
+  </div>
+
+</div>
+
+<h2 id="different-ways-of-importing">Different Ways of Importing</h2>
+
+<ul>
+  <li>The way you import a module determines what syntax you need to use
+the contents of the module in your program.</li>
+  <li>We can import only a selection of functions and variables:</li>
+</ul>
+
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span><span class="n">pi</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">pi</span>
+<span class="mf">3.141592653589793</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="mf">2.0</span>
+
+</code></pre></div>    </div>
+  </div>
+
+</div>
+
+<ul>
+  <li>Or we can give a new name to the module within our program:</li>
+</ul>
+
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">math</span> <span class="k">as</span> <span class="n">m</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">pi</span>
+<span class="mf">3.141592653589793</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">m</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="mf">2.0</span>
+
+</code></pre></div>    </div>
+  </div>
+
+</div>
+
+<ul>
+  <li>Both of these methods help us distinguish between the function
+<code class="highlighter-rouge">sqrt</code> and the data <code class="highlighter-rouge">pi</code> defined in the math module from a
+function with the same name (if we had one) in our program.</li>
+  <li>We can also do this (which is NOT recommended!):</li>
+</ul>
+
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="o">*</span>
+
+</code></pre></div>    </div>
+  </div>
+
+</div>
+
+<p>Now, there is no name difference between the math module functions
+and ours. Since this leads to confusion when the same name appears
+in two different modules it is almost always avoided.</p>
+
+<h2 id="program-structure">Program Structure</h2>
+
+<ul>
+  <li>We have now seen several components of a program:
+<code class="highlighter-rouge">import</code>, comments, and our own code, including input,
+computation and output statements.  We will add more components,
+such as our own functions, as we proceed through the semester.</li>
+  <li>You should organize these components in your program files to make it
+easy to see the flow of the program</li>
+  <li>We will use the following convention to order the program
+components:
+    <ul>
+      <li>an initial comment explaining the purpose of the program,</li>
+      <li>all <code class="highlighter-rouge">import</code> statements,</li>
+      <li>then all variables and input commands,</li>
+      <li>then all computation,</li>
+      <li>finally all output.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="putting-it-all-together">Putting It All Together</h2>
+
+<ul>
+  <li>In the rest of this class we will write a program that first asks
+the user for a name, then asks for the radius and height of a
+cylinder, and finally prints the surface area and volume of the cylinder,
+nicely formatted.</li>
+</ul>
+
+<h2 id="practice-problems-2">Practice Problems (2)</h2>
+
+<ol>
+  <li>The <code class="highlighter-rouge">math</code> module contains the constant <code class="highlighter-rouge">e</code> as well as <code class="highlighter-rouge">pi</code>.
+  Write code that prints these values accurate to 3 decimal places
+  and then write code that computes and outputs<br />
+  <script type="math/tex">\pi^e</script>
+  and<br />
+  <script type="math/tex">e^\pi</script>
+  both accurate to 2 decimal places.</li>
+  <li>Write a short program to ask the user to input height
+  values (in cm) three times.  After reading these values (as
+  integers), the program should output the largest, the smallest and
+  the average of the height values.</li>
+  <li>What happens when we type</li>
+</ol>
+
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">math</span>
+<span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">=</span> <span class="mi">3</span>
+
+</code></pre></div>    </div>
+  </div>
+
+</div>
+
+<p>and then use <code class="highlighter-rouge">math.pi</code>?</p>
+
+<h2 id="summary">Summary</h2>
+
+<ul>
+  <li>Python provides many functions that perform useful operations on
+strings, integers and floats.</li>
+  <li>Some of these functions are <em>built in</em> while others are organized
+into modules.</li>
+  <li>Be aware of the differences between how functions are called. You
+must remember them to call them correctly.</li>
+  <li>Functions that require dot notation, applying the function
+to an object (or a variable containing an object):</li>
+</ul>
+
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="s">"abc"</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="s">'ABC'</span>
+
+</code></pre></div>    </div>
+  </div>
+
+</div>
+
+<ul>
+  <li>Functions that are called with arguments (no dot notation):</li>
+</ul>
+
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mf">4.6</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="mf">4.6</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="o">-</span><span class="mi">5</span>
+
+</code></pre></div>    </div>
+  </div>
+
+</div>
+
+<p>Note that these functions are actually aliases. The same function
+also exists in dot notation.</p>
+
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mf">4.6</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="o">.</span><span class="n">__abs__</span><span class="p">()</span>
+<span class="mf">4.6</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">x</span><span class="o">.</span><span class="n">__round__</span><span class="p">()</span>
+<span class="o">-</span><span class="mi">5</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mf">4.6</span><span class="o">.</span><span class="n">__round__</span><span class="p">()</span>
+<span class="mi">5</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">__abs__</span><span class="p">()</span>
+<span class="mi">1</span>
+
+</code></pre></div>    </div>
+  </div>
+
+</div>
+
+<ul>
+  <li>After a module is imported, the functions in the module can be
+used by a call of the form:</li>
+</ul>
+
+<div class="cell code_cell">
+  <div class="input_area">
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">module_name</span><span class="o">.</span><span class="n">function_name</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span>
+
+</code></pre></div>    </div>
+  </div>
+
+</div>
+
+<ul>
+  <li>You can see the details of a function by:
+    <blockquote>
+      <blockquote>
+        <blockquote>
+          <p>help(module_name.function_name)- Python has many modules that make it easy to do
+complicated tasks. If you do not believe it, try typing:<br />
+import antigravity</p>
+        </blockquote>
+      </blockquote>
+    </blockquote>
+  </li>
+</ul>
+
+
+              <nav class="c-page__nav">
+  
+    
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/csci1100/docs/notebooks/lec03_strings">
+      〈 <span class="u-margin-right-tiny"></span> Lecture 3 - Python Strings
+    </a>
+  
+
+  
+    
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/csci1100/docs/assignments/index">
+      Assignments <span class="u-margin-right-tiny"></span> 〉
+    </a>
+  
+</nav>
+
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+  </body>
+</html>
